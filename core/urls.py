@@ -19,11 +19,15 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 
+from apps.pages.views import home_page_view
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('ckeditor/',   include('ckeditor_uploader.urls')),
     path('blogs/', include('apps.blogs.urls', namespace='blogs')),
-    path('', include('apps.pages.urls', namespace='pages')),
+    path('products/', include('apps.products.urls', namespace='products')),
+    path('contacts/', include('apps.pages.urls', namespace='pages')),
+    path('', home_page_view, name='home'),
 ]
 
 if settings.DEBUG:

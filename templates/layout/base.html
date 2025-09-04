@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>{% block title %}Furniture Store{% endblock %}</title>
+    <meta name="keywords" content="HTML5 Template">
+    <meta name="description" content="Furniture Store Template">
+    <meta name="author" content="Your Name">
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'assets/images/icons/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'assets/images/icons/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'assets/images/icons/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'assets/images/icons/site.webmanifest' %}">
+    <link rel="mask-icon" href="{% static 'assets/images/icons/safari-pinned-tab.svg' %}" color="#666666">
+    <link rel="shortcut icon" href="{% static 'assets/images/icons/favicon.ico' %}">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/owl-carousel/owl.carousel.css' %}">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+    {% block extra_css %}{% endblock %}
+</head>
+
+<body>
+<div class="page-wrapper">
+
+    <!-- Header -->
+    {% url 'pages:home' as home_url %}
+    {% if request.path == home_url %}
+        {% include 'layout/header-home.html' %}
+    {% else %}
+        {% include 'layout/header-base.html' %}
+    {% endif %}
+
+    <!-- Main content -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    {% include 'layout/footer.html' %}
+
+</div>
+
+<!-- Scroll Top Button -->
+<button id="scroll-top" title="Back to Top"><i class="icon-arrow-up"></i></button>
+
+<!-- Mobile Menu & Modals -->
+{% include 'layout/mobile-menu.html' %}
+{% include 'layout/sign-in-modal.html' %}
+
+<!-- JS Plugins -->
+<script src="{% static 'assets/js/jquery.min.js' %}"></script>
+<script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'assets/js/jquery.hoverIntent.min.js' %}"></script>
+<script src="{% static 'assets/js/jquery.waypoints.min.js' %}"></script>
+<script src="{% static 'assets/js/superfish.min.js' %}"></script>
+<script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
+
+<!-- Main JS -->
+<script src="{% static 'assets/js/main.js' %}"></script>
+{% block extra_js %}{% endblock %}
+
+</body>
+</html>
